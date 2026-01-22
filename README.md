@@ -22,6 +22,22 @@ npm run dev
 
 The backend defaults to `backend/data/settings.yaml`. Override with `XCONTROL_CONFIG_PATH`.
 
+## Download & Run (Terminal)
+
+```bash
+git clone <repo-url> xControlFlow
+cd xControlFlow
+npm install
+npm --prefix backend install
+npm --prefix frontend install
+```
+
+```bash
+npm run dev
+```
+
+Open the UI at `http://localhost:5173` and the API at `http://localhost:4000/api/health`.
+
 ## API Endpoints
 
 - `GET /api/health`
@@ -61,3 +77,24 @@ groups:
               params:
                 command: "tesira level set program $value"
 ```
+
+## Device & Component Type Review (Planned)
+
+Before implementing full schema-driven editing, we need a deep review of each supported **device type** and **component type** to confirm:
+
+- Required vs optional fields.
+- Parameter names, data types, and default values.
+- Status-file mappings and how state is read/written.
+- Event/action wiring and expected command templates.
+
+This review will be used to populate a type registry that drives the inspector UI and validation rules.
+
+## Upload Existing Configs & Stylesheets (Planned)
+
+The app will support uploading an existing `settings.yaml` (or `settings.yml`) to:
+
+- Parse the config into a graph representation.
+- Render a live preview using a default stylesheet or an uploaded stylesheet.
+- Preserve unknown fields for round-trip safety.
+
+Implementation will add API and UI flows for file upload, config parsing, and stylesheet selection.
