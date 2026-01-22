@@ -1,0 +1,16 @@
+{
+  "name": "xcontrolflow-backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "build": "echo 'no build step for backend'"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "js-yaml": "^4.1.0",
+    "zod": "^3.23.8"
+  }
+}
