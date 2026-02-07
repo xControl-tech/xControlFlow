@@ -60,6 +60,24 @@ npm --prefix frontend install
 npm run dev
 ```
 
+If the error persists, verify that WSL is using Linux `node`/`npm` (not Windows):
+
+```bash
+which node
+which npm
+node -v
+npm -v
+```
+
+Expected output should point to `/usr/bin/...` or `/home/<user>/.nvm/...` (not `/mnt/c/` or a Windows path). If it points to Windows, remove Windows node/npm from your WSL PATH and install Linux node:
+
+```bash
+sudo apt update
+sudo apt install -y nodejs npm
+```
+
+Then open a **new** WSL terminal and retry the install commands.
+
 ## API Endpoints
 
 - `GET /api/health`
