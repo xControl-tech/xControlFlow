@@ -38,6 +38,28 @@ npm run dev
 
 Open the UI at `http://localhost:5173` and the API at `http://localhost:4000/api/health`.
 
+### WSL (Ubuntu) Notes
+
+If you see an error like `ENOENT ... \\wsl.localhost\\Ubuntu-22.04\\home\\...\\package.json`, npm is being run from **Windows** instead of inside your WSL shell. Fix it by:
+
+1. Open **Ubuntu (WSL)** and run all commands from there.
+2. Ensure the repo lives inside your WSL filesystem (e.g. `/home/<user>/xControlFlow`) and not in a Windows-mounted path.
+
+```bash
+pwd
+# should look like: /home/<user>/xControlFlow
+ls package.json
+```
+
+Then re-run:
+
+```bash
+npm install
+npm --prefix backend install
+npm --prefix frontend install
+npm run dev
+```
+
 ## API Endpoints
 
 - `GET /api/health`
