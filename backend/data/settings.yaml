@@ -1,0 +1,31 @@
+devices:
+  - id: pgx-selector-1
+    type: pgx-selector
+    label: PGx Selector
+    args:
+      host: 192.168.1.10
+
+actions:
+  - id: raw-pgx-1
+    type: Raw
+    params:
+      command: "PGxSelector set sourceSelection 1"
+
+groups:
+  - id: main
+    label: Main Page
+    components:
+      - id: pgx-options
+        type: options
+        label: PGx Source
+        args:
+          default: 1
+          options:
+            - label: "$PGxSelector-1.label"
+              value: 1
+              selected: "$PGxMeter-1.state"
+        events:
+          option(1):
+            - action: Raw
+              params:
+                command: "PGxSelector set sourceSelection 1"
